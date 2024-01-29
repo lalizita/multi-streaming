@@ -1,0 +1,12 @@
+services:
+  nginx:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+     - ./stream:/hls/live
+    ports:
+      - "1935:1935"
+      - "8081:8081"
+    env_file:
+      - .env

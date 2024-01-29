@@ -1,0 +1,18 @@
+worker_processes auto;
+
+events {
+    worker_connections 1024;
+}
+
+rtmp {
+    server {
+        listen 1935;
+
+        application live {
+            live on;
+            record off;
+            push $YOUTUBE_STREAMING_URL/$YOUTUBE_STREAMING_KEY;
+            push $TWITCH_STREAMING_URL/$TWITCH_STREAMING_KEY;
+        }
+    }
+}
